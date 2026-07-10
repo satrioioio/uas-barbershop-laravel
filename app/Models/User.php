@@ -14,16 +14,21 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * Primary key yang digunakan (custom, bukan default 'id').
+     */
+    protected $primaryKey = 'id_user';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
-    'username', // Ganti 'name' menjadi 'username'
-    'email',
-    'password',
-    'role',     // Tambahkan role
-];
+        'username',
+        'email',
+        'password',
+        'role',
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,5 +51,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Cek apakah user adalah Owner.
+     */
+    public function isOwner(): bool
+    {
+        return $this->role === 'Owner';
+    }
+
+    /**
+     * Cek apakah user adalah Capster.
+     */
+    public function isCapster(): bool
+    {
+        return $this->role === 'Capster';
     }
 }
