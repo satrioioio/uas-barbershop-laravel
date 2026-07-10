@@ -21,6 +21,7 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Handle an incoming authentication request.
+     * Redirect berdasarkan role: Owner → dashboard, Capster → input transaksi
      */
     public function store(LoginRequest $request): RedirectResponse
     {
@@ -28,7 +29,14 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Role-based redirect
+        $user = Auth::user();
+
+        if ($user->isOwner()) {
+            return redirect()->intended(route('owner.dashboard', absolute: false));
+        }
+
+        return redirect()->intended(route('capster.transaksi', absolute: false));
     }
 
     /**

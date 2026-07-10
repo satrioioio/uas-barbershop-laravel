@@ -1,3 +1,382 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================
+   BarberFlow - Custom Styles
+   ============================================ */
+
+/* ---------- Color Variables ---------- */
+:root {
+    --bf-ice: #DDF2FF;
+    --bf-sky: #51B7F9;
+    --bf-deep: #3A9FE0;
+    --bf-navy: #1E88C7;
+    --bf-dark: #1A1A2E;
+    --bf-gray: #6B7280;
+    --bf-error-bg: #FFF0F0;
+    --bf-error: #E74C3C;
+}
+
+/* ---------- Guest Layout Background ---------- */
+.bf-gradient-bg {
+    background: linear-gradient(160deg, #DDF2FF 0%, #B8E2FF 40%, #E8F4FD 70%, #DDF2FF 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---------- Floating Decorative Circles ---------- */
+.bf-floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.bf-circle-1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #51B7F9, #87CEEB);
+    top: -80px;
+    right: -60px;
+    animation: bf-float-1 8s ease-in-out infinite;
+}
+
+.bf-circle-2 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #3A9FE0, #51B7F9);
+    bottom: -40px;
+    left: -40px;
+    animation: bf-float-2 10s ease-in-out infinite;
+}
+
+.bf-circle-3 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #87CEEB, #DDF2FF);
+    top: 40%;
+    left: 10%;
+    animation: bf-float-3 12s ease-in-out infinite;
+}
+
+.bf-circle-4 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #51B7F9, #B8E2FF);
+    top: 20%;
+    right: 15%;
+    animation: bf-float-4 9s ease-in-out infinite;
+}
+
+@keyframes bf-float-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30px, 40px) scale(1.05); }
+}
+
+@keyframes bf-float-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -30px) scale(1.08); }
+}
+
+@keyframes bf-float-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, 30px) scale(0.95); }
+}
+
+@keyframes bf-float-4 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, -20px) scale(1.1); }
+}
+
+/* ---------- Glassmorphism Card ---------- */
+.bf-glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 8px 32px rgba(81, 183, 249, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.bf-glass-card:hover {
+    box-shadow:
+        0 12px 40px rgba(81, 183, 249, 0.18),
+        0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Card Entrance Animation ---------- */
+.bf-card-enter {
+    animation: bf-card-slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bf-card-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ---------- Logo Animation ---------- */
+.bf-logo-enter {
+    animation: bf-logo-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+    opacity: 0;
+}
+
+@keyframes bf-logo-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* ---------- Custom Input Fields ---------- */
+.bf-input {
+    background-color: #F0F8FF;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 12px 16px 12px 44px;
+    font-size: 0.95rem;
+    color: var(--bf-dark);
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.bf-input::placeholder {
+    color: #A0AEC0;
+    font-weight: 400;
+}
+
+.bf-input:focus {
+    background-color: #FFFFFF;
+    border-color: var(--bf-sky);
+    box-shadow: 0 0 0 4px rgba(81, 183, 249, 0.15), 0 2px 8px rgba(81, 183, 249, 0.1);
+}
+
+.bf-input:hover:not(:focus) {
+    background-color: #E8F4FD;
+    border-color: rgba(81, 183, 249, 0.3);
+}
+
+/* Input error state */
+.bf-input-error {
+    border-color: var(--bf-error) !important;
+    background-color: var(--bf-error-bg) !important;
+}
+
+.bf-input-error:focus {
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.15) !important;
+}
+
+/* ---------- Input Icon ---------- */
+.bf-input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #A0AEC0;
+    transition: color 0.3s ease;
+    pointer-events: none;
+}
+
+.bf-input-group:focus-within .bf-input-icon {
+    color: var(--bf-sky);
+}
+
+/* ---------- Password Toggle ---------- */
+.bf-password-toggle {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #A0AEC0;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.bf-password-toggle:hover {
+    color: var(--bf-sky);
+    background-color: rgba(81, 183, 249, 0.1);
+}
+
+/* ---------- Primary Button (Gradient) ---------- */
+.bf-btn-primary {
+    background: linear-gradient(135deg, #51B7F9 0%, #3A9FE0 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(81, 183, 249, 0.3);
+}
+
+.bf-btn-primary:hover {
+    background: linear-gradient(135deg, #3A9FE0 0%, #1E88C7 100%);
+    box-shadow: 0 6px 25px rgba(81, 183, 249, 0.45);
+    transform: translateY(-2px);
+}
+
+.bf-btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(81, 183, 249, 0.3);
+}
+
+/* Button shimmer effect */
+.bf-btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.bf-btn-primary:hover::after {
+    left: 100%;
+}
+
+/* ---------- Custom Checkbox ---------- */
+.bf-checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 2px solid #CBD5E0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    accent-color: var(--bf-sky);
+}
+
+.bf-checkbox:checked {
+    border-color: var(--bf-sky);
+}
+
+/* ---------- Link Styles ---------- */
+.bf-link {
+    color: var(--bf-sky);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.bf-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--bf-sky);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+}
+
+.bf-link:hover {
+    color: var(--bf-deep);
+}
+
+.bf-link:hover::after {
+    width: 100%;
+}
+
+/* ---------- Form Group Stagger Animation ---------- */
+.bf-stagger-1 { animation: bf-fade-in 0.4s ease 0.1s forwards; opacity: 0; }
+.bf-stagger-2 { animation: bf-fade-in 0.4s ease 0.2s forwards; opacity: 0; }
+.bf-stagger-3 { animation: bf-fade-in 0.4s ease 0.3s forwards; opacity: 0; }
+.bf-stagger-4 { animation: bf-fade-in 0.4s ease 0.4s forwards; opacity: 0; }
+.bf-stagger-5 { animation: bf-fade-in 0.4s ease 0.5s forwards; opacity: 0; }
+.bf-stagger-6 { animation: bf-fade-in 0.4s ease 0.6s forwards; opacity: 0; }
+
+@keyframes bf-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Divider ---------- */
+.bf-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #A0AEC0;
+    font-size: 0.85rem;
+}
+
+.bf-divider::before,
+.bf-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #CBD5E0, transparent);
+}
+
+/* ---------- Label ---------- */
+.bf-label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #4A5568;
+    margin-bottom: 6px;
+}
+
+/* ---------- Error Message ---------- */
+.bf-error-text {
+    color: var(--bf-error);
+    font-size: 0.8rem;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ---------- Alpine.js Cloak ---------- */
+[x-cloak] {
+    display: none !important;
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 640px) {
+    .bf-glass-card {
+        margin: 0 8px;
+        padding: 24px 20px !important;
+    }
+
+    .bf-circle-1 { width: 200px; height: 200px; }
+    .bf-circle-2 { width: 150px; height: 150px; }
+    .bf-circle-3 { width: 100px; height: 100px; }
+    .bf-circle-4 { width: 80px; height: 80px; }
+}
