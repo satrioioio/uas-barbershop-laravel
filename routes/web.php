@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AkunController;
+use App\Http\Controllers\CapsterController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,19 +15,29 @@ Route::get('/', function () {
 // Route untuk Owner (role: Owner)
 // ============================================
 Route::middleware(['auth', 'role:Owner'])->prefix('owner')->name('owner.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('owner.dashboard');
-    })->name('dashboard');
+
+    // Dashboard
+    Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('dashboard');
+
+    // Data Transaksi
+    Route::get('/transaksi', [OwnerController::class, 'transaksi'])->name('transaksi');
+
+    // CRUD Layanan
+    Route::resource('layanan', LayananController::class)->except(['show']);
+
+    // CRUD Akun
+    Route::resource('akun', AkunController::class)->except(['show']);
 });
 
 // ============================================
 // Route untuk Capster (role: Capster)
 // ============================================
 Route::middleware(['auth', 'role:Capster'])->prefix('capster')->name('capster.')->group(function () {
-    Route::get('/transaksi', function () {
-        return view('capster.transaksi');
-    })->name('transaksi');
+    Route::get('/transaksi', [CapsterController::class, 'transaksi'])->name('transaksi');
+    Route::post('/transaksi', [CapsterController::class, 'store'])->name('store');
+    Route::get('/struk/{id}', [CapsterController::class, 'struk'])->name('struk');
 });
+
 
 // ============================================
 // Route umum (semua role yang sudah login)
