@@ -1,0 +1,232 @@
+/* ============================================
+   BarberFlow - Capster Layout
+   ============================================ */
+
+.bf-capster-body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(160deg, #DDF2FF 0%, #B8E2FF 40%, #E8F4FD 100%);
+    min-height: 100vh;
+}
+
+.bf-capster-topbar {
+    background: white;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+.bf-capster-brand { display: flex; align-items: center; gap: 10px; }
+.bf-capster-logo { width: 32px; height: 32px; object-fit: contain; }
+.bf-capster-brand-name { font-size: 1.1rem; font-weight: 700; color: #1E88C7; letter-spacing: -0.5px; }
+
+.bf-capster-user { display: flex; align-items: center; gap: 12px; }
+
+.bf-capster-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg, #51B7F9, #1E88C7);
+    color: white; font-size: 0.9rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.bf-capster-user-info { display: flex; flex-direction: column; }
+.bf-capster-username { font-size: 0.85rem; font-weight: 600; color: #1F2937; line-height: 1.2; }
+.bf-capster-role { font-size: 0.7rem; color: #9CA3AF; }
+
+.bf-capster-logout-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: #FEF2F2; color: #DC2626;
+    border: none; padding: 8px 14px; border-radius: 8px;
+    font-size: 0.8rem; font-weight: 500;
+    cursor: pointer; font-family: 'Poppins', sans-serif;
+    transition: background 0.2s;
+}
+
+.bf-capster-logout-btn:hover { background: #FEE2E2; }
+.bf-capster-content { padding: 32px 24px; max-width: 500px; margin: 0 auto; }
+.bf-capster-wrapper { display: flex; justify-content: center; }
+
+.bf-capster-form-card {
+    background: white; border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(81,183,249,0.12);
+    width: 100%; overflow: hidden;
+}
+
+.bf-capster-form-header {
+    background: linear-gradient(135deg, #51B7F9, #1E88C7);
+    padding: 24px; display: flex; align-items: center; gap: 16px;
+}
+
+.bf-capster-form-icon {
+    width: 52px; height: 52px;
+    background: rgba(255,255,255,0.2); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; flex-shrink: 0;
+}
+
+.bf-capster-form-title { font-size: 1.2rem; font-weight: 700; color: white; margin: 0; }
+.bf-capster-form-sub { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin: 2px 0 0; }
+.bf-capster-form { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+.bf-capster-select { font-size: 0.9rem; }
+
+.bf-capster-harga-preview {
+    display: flex; align-items: center; gap: 8px;
+    background: #F0FDF4; border: 1px solid #BBF7D0;
+    color: #15803D; padding: 10px 14px; border-radius: 8px;
+    font-size: 0.875rem; margin-top: -12px;
+}
+
+.bf-payment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.bf-payment-option {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; padding: 16px;
+    border: 2px solid #E5E7EB; border-radius: 12px;
+    cursor: pointer; transition: all 0.2s ease; user-select: none;
+}
+
+.bf-payment-option:hover { border-color: #51B7F9; background: #F0F9FF; }
+.bf-payment-option--selected { border-color: #1E88C7; background: #EFF6FF; }
+.bf-payment-radio { display: none; }
+.bf-payment-icon { font-size: 2rem; }
+.bf-payment-label { font-size: 0.875rem; font-weight: 600; color: #374151; }
+
+.bf-upload-area {
+    border: 2px dashed #D1D5DB; border-radius: 12px;
+    padding: 24px; text-align: center;
+    cursor: pointer; transition: all 0.2s ease; color: #9CA3AF;
+}
+
+.bf-upload-area:hover { border-color: #51B7F9; background: #F0F9FF; }
+.bf-upload-text { font-size: 0.875rem; color: #374151; margin: 8px 0 4px; }
+.bf-upload-hint { font-size: 0.75rem; color: #9CA3AF; margin: 0; }
+.bf-upload-preview { max-width: 100%; max-height: 200px; border-radius: 8px; margin-top: 8px; }
+
+.bf-btn--full { width: 100%; justify-content: center; padding: 12px; font-size: 0.95rem; }
+
+.bf-btn--print {
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+    color: white; box-shadow: 0 2px 6px rgba(34,197,94,0.4);
+}
+
+.bf-btn--print:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(34,197,94,0.5); }
+.bf-hidden { display: none !important; }
+
+/* ============================================
+   Tabel Total Footer & Summary Row
+   ============================================ */
+
+.bf-table-total { background: #F0F9FF; font-weight: 700; border-top: 2px solid #BFDBFE; }
+.bf-table-total td { border-top: 2px solid #BFDBFE !important; color: #1D4ED8; }
+
+.bf-summary-row { display: flex; gap: 12px; margin-bottom: 20px; }
+
+.bf-summary-chip {
+    flex: 1; display: flex; flex-direction: column;
+    gap: 2px; padding: 14px 18px; border-radius: 10px; font-size: 0.875rem;
+}
+
+.bf-summary-chip span { font-size: 0.75rem; font-weight: 500; }
+.bf-summary-chip strong { font-size: 1.1rem; font-weight: 700; }
+.bf-summary-chip--blue { background: #EFF6FF; color: #1D4ED8; }
+.bf-summary-chip--green { background: #F0FDF4; color: #15803D; }
+
+/* ============================================
+   BarberFlow - Struk / Receipt
+   ============================================ */
+
+.bf-struk-body {
+    font-family: 'Poppins', sans-serif;
+    background: #F0F4F8; min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; padding: 24px 16px;
+}
+
+.bf-struk-actions {
+    display: flex; gap: 12px; margin-bottom: 24px;
+    flex-wrap: wrap; justify-content: center;
+}
+
+.bf-struk {
+    background: white; width: 100%; max-width: 340px;
+    border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    padding: 28px 24px;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+.bf-struk-header { text-align: center; margin-bottom: 16px; }
+.bf-struk-logo { width: 48px; height: 48px; object-fit: contain; margin-bottom: 8px; }
+.bf-struk-nama { font-size: 1.3rem; font-weight: 700; margin: 0; letter-spacing: 2px; }
+.bf-struk-tagline { font-size: 0.75rem; color: #6B7280; margin: 4px 0 12px; }
+.bf-struk-garis { font-size: 0.75rem; color: #9CA3AF; letter-spacing: -1px; }
+
+.bf-struk-row { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 4px 0; color: #374151; }
+.bf-struk-row span:last-child { font-weight: 600; text-align: right; max-width: 55%; word-break: break-word; }
+.bf-struk-separator { font-size: 0.75rem; color: #9CA3AF; margin: 8px 0; letter-spacing: -1px; }
+
+.bf-struk-total {
+    font-size: 1rem !important; font-weight: 700 !important;
+    padding: 8px 0 !important;
+    border-top: 1px dashed #D1D5DB; margin-top: 4px;
+}
+
+.bf-struk-qris { margin: 12px 0; text-align: center; }
+.bf-struk-qris-label { font-size: 0.75rem; color: #6B7280; margin: 0 0 6px; }
+.bf-struk-qris-img { max-width: 100%; border-radius: 8px; border: 1px solid #E5E7EB; }
+
+.bf-struk-footer { text-align: center; margin-top: 16px; font-size: 0.78rem; color: #6B7280; line-height: 1.8; }
+.bf-struk-powered { font-size: 0.65rem; color: #D1D5DB; margin-top: 8px; }
+
+/* ============================================
+   BarberFlow - Print @media
+   ============================================ */
+
+.bf-print-header, .bf-print-footer { display: none; }
+
+@media print {
+    .bf-no-print,
+    .bf-sidebar,
+    .bf-topbar,
+    .bf-capster-topbar,
+    .bf-struk-actions { display: none !important; }
+
+    .bf-main-wrapper, .bf-main-wrapper--shifted { margin-left: 0 !important; }
+    .bf-page-content { padding: 0 !important; }
+    body { background: white !important; font-size: 11pt; }
+
+    .bf-print-header {
+        display: block !important;
+        text-align: center;
+        border-bottom: 2px solid #1E88C7;
+        padding-bottom: 12px; margin-bottom: 16px;
+    }
+
+    .bf-print-title { font-size: 20pt; font-weight: 700; color: #1E88C7; margin: 0; }
+    .bf-print-subtitle { font-size: 11pt; color: #374151; margin: 4px 0 2px; }
+    .bf-print-period { font-size: 9pt; color: #6B7280; margin: 0; }
+
+    .bf-print-footer {
+        display: block !important;
+        text-align: center; font-size: 8pt; color: #9CA3AF;
+        border-top: 1px solid #E5E7EB;
+        padding-top: 8px; margin-top: 16px;
+    }
+
+    .bf-table th, .bf-table td { padding: 7px 10px !important; font-size: 9pt; }
+
+    .bf-card {
+        box-shadow: none !important;
+        border: 1px solid #E5E7EB;
+        margin-bottom: 16px !important;
+        border-radius: 0 !important;
+    }
+
+    .bf-card-header { padding: 10px 14px !important; }
+    .bf-summary-row { margin-bottom: 12px !important; }
+    .bf-struk { box-shadow: none !important; border: none !important; }
+}
