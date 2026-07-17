@@ -15,8 +15,8 @@ class OwnerController extends Controller
      */
     public function dashboard()
     {
-        $totalLayanan     = Layanan::count();
-        $totalTransaksi   = Transaksi::count();
+        $totalLayanan = Layanan::count();
+        $totalTransaksi = Transaksi::count();
         $transaksiHariIni = Transaksi::whereDate('waktu_transaksi', today())->count();
 
         // Total pendapatan: jumlah harga layanan dari semua transaksi
@@ -48,6 +48,14 @@ class OwnerController extends Controller
      */
     public function transaksi(Request $request)
     {
+        // 1. Jalankan Validasi Tanggal di paling atas
+        $request->validate([
+            'dari_tanggal' => ['nullable', 'date'],
+            'sampai_tanggal' => ['nullable', 'date', 'after_or_equal:dari_tanggal'],
+        ], [
+            'sampai_tanggal.after_or_equal' => 'Tanggal akhir tidak boleh mendahului tanggal awal.',
+        ]);
+        
         $baseQuery = fn() => Transaksi::join('layanans', 'transaksis.id_layanan', '=', 'layanans.id_layanan')
             ->when($request->filled('dari_tanggal'), fn($q) => $q->whereDate('waktu_transaksi', '>=', $request->dari_tanggal))
             ->when($request->filled('sampai_tanggal'), fn($q) => $q->whereDate('waktu_transaksi', '<=', $request->sampai_tanggal));
@@ -60,7 +68,7 @@ class OwnerController extends Controller
 
         // Total pendapatan keseluruhan dari hasil filter
         $totalPendapatanFilter = $baseQuery()->sum('layanans.harga');
-        $totalTransaksiFilter  = $baseQuery()->count();
+        $totalTransaksiFilter = $baseQuery()->count();
 
         // Ringkasan per capster: jumlah customer & total pendapatan
         $ringkasanPerCapster = $baseQuery()

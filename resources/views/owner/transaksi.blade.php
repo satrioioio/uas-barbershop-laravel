@@ -35,6 +35,11 @@
                         Cetak / Export
                     </button>
                 </div>
+                @if ($errors->has('sampai_tanggal'))
+                <div class="bf-alert bf-alert--danger bf-no-print" style="background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.875rem; font-weight: 500;">
+                    ⚠️ {{ $errors->first('sampai_tanggal') }}
+                </div>
+                @endif
                 <form action="{{ route('owner.transaksi') }}" method="GET" class="bf-filter-form">
                     <div class="bf-filter-group">
                         <label class="bf-label">Dari Tanggal</label>

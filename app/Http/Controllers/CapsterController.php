@@ -59,8 +59,8 @@ class CapsterController extends Controller
     {
         $transaksi = Transaksi::with(['layanan', 'user'])->findOrFail($id);
 
-        // Pastikan capster hanya bisa lihat struk miliknya sendiri
-        if ($transaksi->id_user !== Auth::user()->id_user) {
+        // Perbaikan: Gunakan != atau paksa menjadi (int) agar tipe data string/integer tidak bentrok
+        if ((int)$transaksi->id_user !== (int)Auth::user()->id_user) {
             abort(403);
         }
 

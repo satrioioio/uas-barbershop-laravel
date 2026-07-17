@@ -14,7 +14,7 @@ class LayananController extends Controller
      */
     public function index(): View
     {
-        $layanans = Layanan::latest()->paginate(10);
+        $layanans = Layanan::orderBy('id_layanan', 'asc')->paginate(10);
         return view('owner.layanan.index', compact('layanans'));
     }
 
@@ -33,13 +33,13 @@ class LayananController extends Controller
     {
         $request->validate([
             'nama_layanan' => ['required', 'string', 'max:50'],
-            'harga'        => ['required', 'integer', 'min:0'],
+            'harga' => ['required', 'integer', 'min:0'],
         ]);
 
         Layanan::create([
-            'id_layanan'   => Layanan::generateId(),
+            'id_layanan' => Layanan::generateId(),
             'nama_layanan' => $request->nama_layanan,
-            'harga'        => $request->harga,
+            'harga' => $request->harga,
         ]);
 
         return redirect()->route('owner.layanan.index')
@@ -61,12 +61,12 @@ class LayananController extends Controller
     {
         $request->validate([
             'nama_layanan' => ['required', 'string', 'max:50'],
-            'harga'        => ['required', 'integer', 'min:0'],
+            'harga' => ['required', 'integer', 'min:0'],
         ]);
 
         $layanan->update([
             'nama_layanan' => $request->nama_layanan,
-            'harga'        => $request->harga,
+            'harga' => $request->harga,
         ]);
 
         return redirect()->route('owner.layanan.index')

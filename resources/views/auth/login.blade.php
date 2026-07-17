@@ -32,6 +32,7 @@
                     required
                     autofocus
                     autocomplete="username"
+                    style="padding-left: 44px;"
                 >
             </div>
             <x-input-error :messages="$errors->get('email')" class="bf-error-text" />
@@ -56,7 +57,7 @@
                     placeholder="Enter your password"
                     required
                     autocomplete="current-password"
-                    style="padding-right: 48px;"
+                    style="padding-left: 44px; padding-right: 48px;"
                 >
                 <!-- Toggle Password Visibility -->
                 <button
@@ -82,33 +83,11 @@
             <x-input-error :messages="$errors->get('password')" class="bf-error-text" />
         </div>
 
-        <!-- Remember Me & Forgot Password -->
-        <div class="flex items-center justify-between mb-6 bf-stagger-4">
-            <label for="remember_me" class="inline-flex items-center cursor-pointer">
-                <input id="remember_me" type="checkbox" class="bf-checkbox" name="remember">
-                <span class="ms-2 text-sm" style="color: #6B7280;">{{ __('Remember me') }}</span>
-            </label>
-
-            @if (Route::has('password.request'))
-                <a class="bf-link text-sm" href="{{ route('password.request') }}">
-                    {{ __('Forgot password?') }}
-                </a>
-            @endif
-        </div>
-
         <!-- Login Button -->
         <div class="bf-stagger-5">
             <button type="submit" class="bf-btn-primary">
                 {{ __('Login') }}
             </button>
-        </div>
-
-        <!-- Register Link -->
-        <div class="text-center mt-6 bf-stagger-6">
-            <p class="text-sm" style="color: #6B7280;">
-                Don't have an account?
-                <a href="{{ route('register') }}" class="bf-link">Register</a>
-            </p>
         </div>
     </form>
 </x-guest-layout>
